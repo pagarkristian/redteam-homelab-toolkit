@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Operation-Red_Team_Engagement-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Operation" />
   <img src="https://img.shields.io/badge/Target_Infrastructure-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
-  <img src="https://img.shields.io/badge/Focus-Web_To_RCE_/_Bypass-000000?style=for-the-badge&logo=python&logoColor=white" alt="Focus" />
+  <img src="https://img.shields.io/badge/Focus-Full--Chain_Vulnerability_Validation-000000?style=for-the-badge&logo=python&logoColor=white" alt="Focus" />
 </div>
 
 ---
@@ -27,6 +27,7 @@ The tools in this repository are specifically calibrated to attack targets withi
 * 🐉 **Attacker Node:** Kali Linux Platform (`10.216.27.10`)
 
 ---
+
 
 
 ## 🔗 3. Cross-Project Linkage
