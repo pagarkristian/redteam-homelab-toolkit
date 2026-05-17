@@ -1,48 +1,46 @@
-# 🏛️ Enterprise Homelab Core: Architectural Evolution & Hardening
+Oalah, maklum Lek! Berarti maksudmu kamu mau halaman utama (README.md) untuk repositori khusus eksploit/Red Team yang tadi kita bahas, tapi isinya didesain agar fokus menceritakan kalau target serangannya adalah proyek enterprise-homelab-core kamu itu?
+
+Jadi ketika orang buka repo Red Team-mu, mereka langsung tahu kalau skrip-skrip di dalamnya memang dirancang khusus sebagai "senjata penyerang" untuk membongkar celah di lab jaringanku yang satu lagi.
+
+Ini dia desain README.md terganas untuk repositori Red Team/Audit kamu, lengkap dengan cross-reference yang kuat ke lab utamamu:
+
+Markdown
+# 🎯 Red Team Arsenal: Targeted Auditing Suite for Enterprise Homelab
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Infrastructure_Type-Enterprise_SMB_Core-1F4068?style=for-the-badge&logo=proxmox&logoColor=white" alt="Type" />
-  <img src="https://img.shields.io/badge/Core_Router-MikroTik_RouterOS-0052CC?style=for-the-badge&logo=mikrotik&logoColor=white" alt="Router" />
-  <img src="https://img.shields.io/badge/Production_OS-Ubuntu_Server_24.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="OS" />
-  <img src="https://img.shields.io/badge/Security_Framework-DevSecOps_/_SDLC-D32F2F?style=for-the-badge&logo=target&logoColor=white" alt="Framework" />
+  <img src="https://img.shields.io/badge/Operation-Red_Team_Engagement-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Operation" />
+  <img src="https://img.shields.io/badge/Target_Infrastruktur-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
+  <img src="https://img.shields.io/badge/Focus-Web_To_RCE_/_Bypass-000000?style=for-the-badge&logo=python&logoColor=white" alt="Focus" />
 </div>
 
 ---
 
-## 🌟 1. Executive Overview
+## 💀 1. Executive Mission
 
-> [!IMPORTANT]
-> **Enterprise Homelab Core** adalah sebuah proyek cetak biru (*living blueprint*) arsitektur jaringan tingkat perusahaan skala *Small-to-Medium Business* (SMB). Proyek ini mensimulasikan siklus hidup penuh infrastruktur teknologi informasi di dunia nyata—dimulai dari fase rentan operasional, proses audit keamanan, hingga pengerasan sistem (*hardening*) menyeluruh.
+> [!WARNING]
+> **LEGAL DISCLAIMER:** Seluruh payload, skrip otomatisasi, dan metodologi eksploitasi di dalam repositori ini dikembangkan **MURNI UNTUK TUJUAN PENDIDIKAN, AUDIT KEAMANAN INTERNAL, DAN VALIDASI PERTAHANAN**. Pengujian dilakukan pada lingkungan laboratorium virtual terisolasi yang sah (`enterprise-homelab-core`).
 
-### 🎯 Pilar Utama Proyek:
-* 🔹 **Infrastructure as Code (IaC) Approach:** Seluruh konfigurasi sistem dan perangkat jaringan dikelola, versi-kontrol, dan didokumentasikan layaknya kode perangkat lunak.
-* 🔹 **Secured Lifecycle Execution:** Menerapkan siklus **SDLC** (*Software Development Lifecycle*) untuk melacak evolusi keamanan infrastruktur dari versi lawas ke versi stabil.
-* 🔹 **Realistic Simulation:** Mengintegrasikan sistem operasi server tangguh (Ubuntu LTS) dan sistem perutean standar industri (MikroTik) dalam satu perimeter lab terkendali.
+Repositori ini berfungsi sebagai **buku catatan taktik (Playbook) dan gudang senjata digital (Arsenal)** sisi *Offensive Security* (Red Team). Fokus utamanya adalah mendokumentasikan bagaimana kelemahan arsitektur pada infrastruktur target versi `v1.0.0-vulnerable` dieksploitasi hingga mencapai kontrol penuh (*Remote Code Execution*).
 
 ---
 
-## 🛠️ 2. Core Network Architecture & Topology Matrix
+## 🏛️ 2. Target Environment Mapping
 
-Berikut adalah matriks interkoneksi logis dan alokasi perimeter segmen jaringan laboratorium:
+Senjata di dalam repositori ini dikalibrasi secara spesifik untuk menyerang target dengan parameter jaringan berikut (Sisi Korporat):
 
-| Komponen Sistem | Antarmuka Perangkat | Alokasi IP Address | Default Gateway | Fungsi & Peran Jaringan |
-| :--- | :--- | :--- | :--- | :--- |
-| 🛡️ **Core Router (MikroTik)** | `ether1` (WAN)<br>`ether2` (LAN) | DHCP dari ISP<br>`10.216.27.1/24` | Otomatis<br>N/A | Pusat perutean utama, manajemen NAT, dan penegak regulasi *Firewall Filter Rules*. |
-| 🐧 **Web & FTP Server (Ubuntu)** | `enp0s8` (Internal LAN) | `10.216.27.100/24` | `10.216.27.1` | Host portal bisnis internal `TechSecure` serta pelayan penyimpanan berkas berbasis FTP. |
-| 🐉 **Security Auditor (Kali Linux)**| `eth1` (Internal LAN) | `10.216.27.10/24` | `10.216.27.1` | Konsol pengujian perimeter, pemindaian kerentanan (*Vulnerability Assessment*), dan audit penetrasi. |
+* 🎯 **Target IP Host (Ubuntu Server):** `10.216.27.100` (Segmen Internal LAN)
+* 🌐 **Layanan Target:** Portal Bisnis `TechSecure` (HTTP Port 80) & FTP Server (Port 21)
+* 🛡️ **Perimeter Gateway:** MikroTik RouterOS v7 (`10.216.27.1`)
+* 🐉 **Attacker Node:** Kali Linux Platform (`10.216.27.10`)
 
 ---
 
-## 🔄 3. Security Lifecycle & Versioning Control
+## 🎒 3. Exploit Toolkit & Attack Vectors
 
-Proyek ini dikembangkan secara modular untuk memperlihatkan transisi keamanan yang terukur:
+Berikut adalah pemetaan skrip dan *payload* yang digunakan dalam siklus serangan (*Attack Lifecycle*):
 
-```diff
- ┌────────────────────────────────────────────────────────┐
- │                                                        │
- ▼                                                        │
-+[Build/Upgrade Lab] ──> [Audit & Scan] ──> [Hardening] ──┘
- (Blueprints Base)       (Docs/Laporan)     (Remediasi Kode)
-       │
-       ▼
--[Push Secure Config] ──> v1.0.0 (Vulnerable) ──> v1.1.0 (Hardened Stable)
+| Vektor Serangan | Lokasi Berkas / Skrip | Mekanisme Eksploitasi | Dampak Terhadap Target |
+| :--- | :--- | :--- | :--- |
+| 🌐 **Web Intrusion** | `payloads/reverse-webshell.php` | Mengunggah kode via celah *Unrestricted File Upload*. | Mendapatkan akses eksekusi perintah sistem (`www-data`). |
+| 🤖 **Exploit Automation** | `exploits/rce_uploade_exploiter.py` | Otomatisasi request HTTP POST untuk menembus form upload. | Penanaman *backdoor* instan tanpa interaksi browser manual. |
+| ⚙️ **Local Enumeration** | `recon/local_enum.sh` | Skrip shell otomatis untuk memetakan hak akses internal Ubuntu. | Mengidentifikasi celah *Misconfiguration* untuk eskalasi hak akses. |
