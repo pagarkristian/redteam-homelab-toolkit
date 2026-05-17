@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/Operation-Red_Team_Engagement-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Operation" />
-  <img src="https://img.shields.io/badge/Target_Infrastruktur-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
+  <img src="https://img.shields.io/badge/Target_Infrastructure-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
   <img src="https://img.shields.io/badge/Focus-Web_To_RCE_/_Bypass-000000?style=for-the-badge&logo=python&logoColor=white" alt="Focus" />
 </div>
 
@@ -11,39 +11,34 @@
 ## 💀 1. Executive Mission
 
 > [!WARNING]
-> **LEGAL DISCLAIMER:** Seluruh payload, skrip otomatisasi, dan metodologi eksploitasi di dalam repositori ini dikembangkan **MURNI UNTUK TUJUAN PENDIDIKAN, AUDIT KEAMANAN INTERNAL, DAN VALIDASI PERTAHANAN**. Pengujian dilakukan pada lingkungan laboratorium virtual terisolasi yang sah (`enterprise-homelab-core`).
+> **LEGAL DISCLAIMER:** All payloads, automation scripts, and exploitation methodologies within this repository are developed **STRICTLY FOR EDUCATIONAL PURPOSES, INTERNAL SECURITY AUDITS, AND DEFENSIVE VALIDATION**. Testing was conducted exclusively within a legally authorized, isolated virtual laboratory environment (`enterprise-homelab-core`).
 
-Repositori ini berfungsi sebagai **buku catatan taktik (Playbook) dan gudang senjata digital (Arsenal)** sisi *Offensive Security* (Red Team). Fokus utamanya adalah mendokumentasikan bagaimana kelemahan arsitektur pada infrastruktur target versi `v1.0.0-vulnerable` dieksploitasi hingga mencapai kontrol penuh (*Remote Code Execution*).
+This repository serves as an **Offensive Security (Red Team) Playbook and Digital Weapon Arsenal**. The primary focus is to document how architectural flaws within the target infrastructure version `v1.0.0-vulnerable` were exploited to achieve full control (*Remote Code Execution*).
 
 ---
 
 ## 🏛️ 2. Target Environment Mapping
 
-Senjata di dalam repositori ini dikalibrasi secara spesifik untuk menyerang target dengan parameter jaringan berikut (Sisi Korporat):
+The tools in this repository are specifically calibrated to attack targets within the following corporate network parameters:
 
-* 🎯 **Target IP Host (Ubuntu Server):** `10.216.27.100` (Segmen Internal LAN)
-* 🌐 **Layanan Target:** Portal Bisnis `TechSecure` (HTTP Port 80) & FTP Server (Port 21)
+* 🎯 **Target Host IP (Ubuntu Server):** `10.216.27.100` (Internal LAN Segment)
+* 🌐 **Target Services:** `TechSecure` Business Portal (HTTP Port 80) & FTP Server (Port 21)
 * 🛡️ **Perimeter Gateway:** MikroTik RouterOS v7 (`10.216.27.1`)
 * 🐉 **Attacker Node:** Kali Linux Platform (`10.216.27.10`)
 
 ---
 
-## 🎒 3. Exploit Toolkit & Attack Vectors
 
-Berikut adalah pemetaan skrip dan *payload* yang digunakan dalam siklus serangan (*Attack Lifecycle*):
+## 🔗 3. Cross-Project Linkage
 
-| Vektor Serangan | Lokasi Berkas / Skrip | Mekanisme Eksploitasi | Dampak Terhadap Target |
-| :--- | :--- | :--- | :--- |
-| 🌐 **Web Intrusion** | `payloads/reverse-webshell.php` | Mengunggah kode via celah *Unrestricted File Upload*. | Mendapatkan akses eksekusi perintah sistem (`www-data`). |
-| 🤖 **Exploit Automation** | `exploits/rce_uploade_exploiter.py` | Otomatisasi request HTTP POST untuk menembus form upload. | Penanaman *backdoor* instan tanpa interaksi browser manual. |
-| ⚙️ **Local Enumeration** | `recon/local_enum.sh` | Skrip shell otomatis untuk memetakan hak akses internal Ubuntu. | Mengidentifikasi celah *Misconfiguration* untuk eskalasi hak akses. |
+This repository is an inseparable offensive counterpart to the main defensive project. To examine how the network architecture was built and how attacks from this arsenal were ultimately **blocked completely**, please visit the following links:
 
+> [!TIP]
+> * 🏛️ **Network Architecture & Defense:** Review the router configurations and server hardening blueprints at the [Enterprise Homelab Core Repository](https://github.com/pagarkristian/enterprise-homelab-core).
+> * 📄 **Official Retesting Report:** Read the comprehensive analysis of the failed attack (*Re-Exploit*) post-hardening in the [v1.1.0 Security Retesting Document](https://github.com/pagarkristian/enterprise-homelab-core/blob/4cb973737ffdf5014b13e16056fa0a8258ee8caa/Retesting%20-v1.1.0.md).
 
-🔗 3. Hubungan Antar-Proyek (Cross-Project Linkage)
-Repositori ini adalah bagian ofensif yang tidak terpisahkan dari proyek pertahanan utama. Untuk melihat bagaimana arsitektur jaringan dibangun dan bagaimana serangan dari repo ini akhirnya diblokir total, silakan kunjungi tautan berikut:
+---
 
-[!TIP]
-
-🏛️ Arsitektur Jaringan & Pertahanan: Tinjau cetak biru konfigurasi router dan pengamanan server di (https://github.com/pagarkristian/enterprise-homelab-core).
-
-📄 Laporan Audit Resmi: Baca analisis lengkap kegagalan serangan (Retesting) setelah proses hardening dilakukan di (https://github.com/pagarkristian/enterprise-homelab-core/blob/4cb973737ffdf5014b13e16056fa0a8258ee8caa/Retesting%20-v1.1.0.md).
+<div align="center">
+  <sub>Maintained by <b>pagarkristian</b> for Cyber Security & Red Team Portfolio Standardization.</sub>
+</div>
