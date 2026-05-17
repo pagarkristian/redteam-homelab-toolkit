@@ -1,10 +1,3 @@
-Oalah, maklum Lek! Berarti maksudmu kamu mau halaman utama (README.md) untuk repositori khusus eksploit/Red Team yang tadi kita bahas, tapi isinya didesain agar fokus menceritakan kalau target serangannya adalah proyek enterprise-homelab-core kamu itu?
-
-Jadi ketika orang buka repo Red Team-mu, mereka langsung tahu kalau skrip-skrip di dalamnya memang dirancang khusus sebagai "senjata penyerang" untuk membongkar celah di lab jaringanku yang satu lagi.
-
-Ini dia desain README.md terganas untuk repositori Red Team/Audit kamu, lengkap dengan cross-reference yang kuat ke lab utamamu:
-
-Markdown
 # 🎯 Red Team Arsenal: Targeted Auditing Suite for Enterprise Homelab
 
 <div align="center">
