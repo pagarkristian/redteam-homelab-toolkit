@@ -46,4 +46,4 @@ Repositori ini adalah bagian ofensif yang tidak terpisahkan dari proyek pertahan
 
 🏛️ Arsitektur Jaringan & Pertahanan: Tinjau cetak biru konfigurasi router dan pengamanan server di (https://github.com/pagarkristian/enterprise-homelab-core).
 
-📄 Laporan Audit Resmi: Baca analisis lengkap kegagalan serangan (Re-Exploit) setelah proses hardening dilakukan di Dokumen Audit & Validasi Keamanan v1.1.0.
+📄 Laporan Audit Resmi: Baca analisis lengkap kegagalan serangan (Retesting) setelah proses hardening dilakukan di (https://github.com/pagarkristian/enterprise-homelab-core/blob/4cb973737ffdf5014b13e16056fa0a8258ee8caa/Retesting%20-v1.1.0.md).
