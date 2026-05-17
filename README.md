@@ -37,3 +37,13 @@ Berikut adalah pemetaan skrip dan *payload* yang digunakan dalam siklus serangan
 | 🌐 **Web Intrusion** | `payloads/reverse-webshell.php` | Mengunggah kode via celah *Unrestricted File Upload*. | Mendapatkan akses eksekusi perintah sistem (`www-data`). |
 | 🤖 **Exploit Automation** | `exploits/rce_uploade_exploiter.py` | Otomatisasi request HTTP POST untuk menembus form upload. | Penanaman *backdoor* instan tanpa interaksi browser manual. |
 | ⚙️ **Local Enumeration** | `recon/local_enum.sh` | Skrip shell otomatis untuk memetakan hak akses internal Ubuntu. | Mengidentifikasi celah *Misconfiguration* untuk eskalasi hak akses. |
+
+
+🔗 3. Hubungan Antar-Proyek (Cross-Project Linkage)
+Repositori ini adalah bagian ofensif yang tidak terpisahkan dari proyek pertahanan utama. Untuk melihat bagaimana arsitektur jaringan dibangun dan bagaimana serangan dari repo ini akhirnya diblokir total, silakan kunjungi tautan berikut:
+
+[!TIP]
+
+🏛️ Arsitektur Jaringan & Pertahanan: Tinjau cetak biru konfigurasi router dan pengamanan server di Enterprise Homelab Core Repository.
+
+📄 Laporan Audit Resmi: Baca analisis lengkap kegagalan serangan (Re-Exploit) setelah proses hardening dilakukan di Dokumen Audit & Validasi Keamanan v1.1.0.
