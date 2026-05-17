@@ -13,7 +13,7 @@
 > [!WARNING]
 > **LEGAL DISCLAIMER:** All payloads, automation scripts, and exploitation methodologies within this repository are developed **STRICTLY FOR EDUCATIONAL PURPOSES, INTERNAL SECURITY AUDITS, AND DEFENSIVE VALIDATION**. Testing was conducted exclusively within a legally authorized, isolated virtual laboratory environment (`enterprise-homelab-core`).
 
-This repository serves as an **Offensive Security (Red Team) Playbook and Digital Weapon Arsenal**. The primary focus is to document how architectural flaws within the target infrastructure version `v1.0.0-vulnerable` were exploited to achieve full control (*Remote Code Execution*).
+This repository serves as an **Offensive Security (Red Team) Playbook and Digital Weapon Arsenal**. The primary focus is to document how architectural flaws within the **designated target version baselines (e.g., `v1.0.0-vulnerable` and subsequent unhardened releases)** were exploited to achieve full control (*Remote Code Execution*).
 
 ---
 
