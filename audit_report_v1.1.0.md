@@ -33,3 +33,4 @@ ip a
 <img width="1267" height="383" alt="Screenshot 2026-05-14 234602" src="https://github.com/user-attachments/assets/282b9cee-e365-499b-b642-3cff74e3e448" />
 
 
+On The Way
