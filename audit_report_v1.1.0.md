@@ -16,34 +16,41 @@
 This document serves as a comprehensive technical writeup detailing the security audit and exploitation simulation performed on the **PT. TechSecure Indonesia v1.1.0** local staging infrastructure. This assessment was conducted to validate network configurations, discover web application vulnerabilities, execute dictionary attacks, and chain exploits to achieve full system compromise (acquiring verification flags).
 
 ###  Network Infrastructure Topology
-```mermaid
-graph TD
-    %% Definisi Gaya Warna
-    classDef internet fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef kali fill:#85C1E9,stroke:#2E86C1,stroke-width:2px;
-    classDef router fill:#F7DC6F,stroke:#D4AC0D,stroke-width:2px;
-    classDef target fill:#F5B7B1,stroke:#CB4335,stroke-width:2px;
-    classDef ports fill:#EBEDEF,stroke:#7F8C8D,stroke-width:1px;
 
-    WAN([INTERNET / WAN]) :::internet
-    
-    subnets{{"================== HOST-ONLY NETWORK ==================<br>Subnet: 10.216.27.0/24 | Gateway: 10.216.27.1"}}
-    
-    Kali[Kali Linux<br>Auditor Node<br>IP: 10.216.27.10] :::kali
-    Router[Gateway / MikroTik Router<br>IP: 10.216.27.1] :::router
-    Ubuntu[Ubuntu Target Server<br>TechSecure Portal<br>IP: 10.216.27.100] :::target
-    
-    P21[Port 21: FTP<br>vsftpd 3.0.5<br>Anonymous Login] :::ports
-    P22[Port 22: SSH<br>OpenSSH 9.6p1<br>Hydra Brute Force] :::ports
-    P80[Port 80: HTTP<br>Apache 2.4.58<br>SQLi & RCE] :::ports
-
-    WAN -->|DHCP / NAT| Kali
-    Kali -->|Interface: eth1| subnets
-    subnets --> Router
-    subnets --> Ubuntu
-    Ubuntu --> P21
-    Ubuntu --> P22
-    Ubuntu --> P80
+```text
+                  [ INTERNET / WAN ]
+                           │
+                           │ (DHCP / NAT)
+                           ▼
+                  ┌─────────────────┐
+                  │   Kali Linux    │ (Auditor Node)
+                  │  (IP: 10.216.27.10)│
+                  └────────┬────────┘
+                           │
+                           │ (Interface: eth1)
+                           │
+                           ▼
+  ================== [ HOST-ONLY NETWORK ] ==================
+         (Subnet: 10.216.27.0/24 | Gateway: 10.216.27.1)
+                           │
+                           ├───► [ Gateway / MikroTik Router ]
+                           │          (IP: 10.216.27.1)
+                           │
+                           ▼
+              ┌─────────────────────────┐
+              │  Ubuntu Target Server   │ (TechSecure Portal)
+              │    (IP: 10.216.27.100)  │
+              └────────────┬────────────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         ▼                 ▼                 ▼
+   [ Port 21: FTP ]  [ Port 22: SSH ]  [ Port 80: HTTP ]
+     (vsftpd 3.0.5)   (OpenSSH 9.6p1)   (Apache 2.4.58)
+         │                 │                 │
+         ▼                 ▼                 ▼
+  Anonymous Login     Hydra Brute      SQLi & RCE
+    (User Flag)      Force (Foothold)  (www-data Shell)
+```
 
 
 ---
