@@ -176,7 +176,7 @@ gobuster dir -u http://10.216.27.100 -w /usr/share/wordlists/dirbuster/directory
 Navigating to http://10.216.27.100 in a browser presented the administrator authentication dashboard for PT. TechSecure Indonesia.
 
 <img width="1919" height="985" alt="Screenshot 2026-05-17 220015" src="https://github.com/user-attachments/assets/5206b216-6af3-4659-898c-3a6a37510e34" />
-<img width="1919" height="753" alt="Screenshot 2026-05-17 222502" src="https://github.com/user-attachments/assets/d2c8e762-e59c-4c6f-baee-dfe1db2424ac" />
+
 
 
 ### 1. Authentication Bypass via SQL Injection
@@ -187,7 +187,7 @@ Target Username Field: admin'#
 Target Password Field: Arbitrary string data
 ```
 <img width="1919" height="809" alt="Screenshot 2026-05-17 222443" src="https://github.com/user-attachments/assets/8e650732-1320-4682-b13a-50244ee882e0" />
-![Uploading Screenshot 2026-05-17 222502.png…]()
+<img width="1919" height="753" alt="Screenshot 2026-05-17 222502" src="https://github.com/user-attachments/assets/d2c8e762-e59c-4c6f-baee-dfe1db2424ac" />
 
 
 # Technical Database Query Analysis (MySQL)
