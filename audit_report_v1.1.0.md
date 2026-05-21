@@ -17,42 +17,40 @@ This document serves as a comprehensive technical writeup detailing the security
 
 ###  Network Infrastructure Topology
 
-```text
-                  [ INTERNET / WAN ]
+```ansi
+                  [1;35m[ INTERNET / WAN ][0m
                            │
                            │ (DHCP / NAT)
                            ▼
                   ┌─────────────────┐
-                  │   Kali Linux    │ (Auditor Node)
+                  │   [1;34mKali Linux[0m    │ (Auditor Node)
                   │  (IP: 10.216.27.10)│
                   └────────┬────────┘
                            │
                            │ (Interface: eth1)
                            │
                            ▼
-  ================== [ HOST-ONLY NETWORK ] ==================
+  [1;33m================== [ HOST-ONLY NETWORK ] ==================[0m
          (Subnet: 10.216.27.0/24 | Gateway: 10.216.27.1)
                            │
-                           ├───► [ Gateway / MikroTik Router ]
+                           ├───► [1;33m[ Gateway / MikroTik Router ][0m
                            │          (IP: 10.216.27.1)
                            │
                            ▼
               ┌─────────────────────────┐
-              │  Ubuntu Target Server   │ (TechSecure Portal)
+              │  [1;31mUbuntu Target Server[0m   │ (TechSecure Portal)
               │    (IP: 10.216.27.100)  │
               └────────────┬────────────┘
                            │
          ┌─────────────────┼─────────────────┐
          ▼                 ▼                 ▼
-   [ Port 21: FTP ]  [ Port 22: SSH ]  [ Port 80: HTTP ]
+   [1;32m[ Port 21: FTP ][0m  [1;32m[ Port 22: SSH ][0m  [1;32m[ Port 80: HTTP ][0m
      (vsftpd 3.0.5)   (OpenSSH 9.6p1)   (Apache 2.4.58)
          │                 │                 │
          ▼                 ▼                 ▼
   Anonymous Login     Hydra Brute      SQLi & RCE
     (User Flag)      Force (Foothold)  (www-data Shell)
-
 ```
-
 ---
 
 ## Phase 1: Network Configuration & Interface Verification
