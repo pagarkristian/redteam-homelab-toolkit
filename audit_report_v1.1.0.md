@@ -248,7 +248,9 @@ The application handled the payload upload pipeline without returning any struct
 ```text
 Success! File has been uploaded to: uploads/exploit.php
 ```
-<img width="1655" height="660" alt="Screenshot 2026-05-17 223222" src="https://github.com/user-attachments/assets/6f0d5c63-4e66-4334-8a19-c92274940db6" />
+
+<img width="1919" height="978" alt="Screenshot 2026-05-17 225201" src="https://github.com/user-attachments/assets/b18533a6-cd6a-4a44-9082-99d0a91e5518" />
+
 
 ### 3. Triggering System-Level Remote Code Execution
 System execution capabilities were validated by mapping system calls directly through the URL parameter tracking index string ?cmd=.
