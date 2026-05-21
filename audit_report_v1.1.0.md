@@ -13,7 +13,7 @@
 
 ##  Project Overview & Directory Structure
 
-This document serves as a comprehensive technical writeup detailing the security audit and exploitation simulation performed on the **PT. TechSecure Indonesia v1.1.0** local staging infrastructure. This assessment was conducted to validate network configurations, discover web application vulnerabilities, execute dictionary attacks, and chain exploits to achieve full system compromise (acquiring verification flags).
+This document serves as a comprehensive technical writeup detailing the security audit and exploitation simulation performed on the **PT. TechSecure Indonesia v1.0.0** local staging infrastructure. This assessment was conducted to validate network configurations, discover web application vulnerabilities, execute dictionary attacks, and chain exploits to achieve full system compromise (acquiring verification flags).
 
 ###  Network Infrastructure Topology
 
