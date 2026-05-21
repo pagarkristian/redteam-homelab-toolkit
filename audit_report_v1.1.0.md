@@ -204,6 +204,7 @@ SELECT * FROM users WHERE username = 'admin'#' AND password = '$pass'
 ```
 
 => Exploitation Impact: The single quote character (') breaks out of the initial boundaries of the string, while the hash character (#) instructs MySQL to treat the remaining verification sequence as a safe inline comment statement.
+
 => Result: The password checking condition is discarded. The application successfully validates the administrative entry for user admin and drops the active session straight into dashboard.php.
 
 
