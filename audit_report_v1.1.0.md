@@ -167,6 +167,8 @@ gobuster dir -u http://10.216.27.100 -w /usr/share/wordlists/dirbuster/directory
 
 # Discovered Paths: /javascript and /ubuntu. Manual browsing to the /javascript root yielded a 403 Forbidden error response, signaling that directory indexing has been securely disabled on this instance.
 
+<img width="1572" height="635" alt="Screenshot 2026-05-17 222203" src="https://github.com/user-attachments/assets/57795846-3130-4478-9bce-c82919a37b79" />
+
 
 ---
 
