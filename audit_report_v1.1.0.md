@@ -51,6 +51,8 @@ This document serves as a comprehensive technical writeup detailing the security
   Anonymous Login     Hydra Brute      SQLi & RCE
     (User Flag)      Force (Foothold)  (www-data Shell)
 ```
+
+
 ---
 
 ## Phase 1: Network Configuration & Interface Verification
