@@ -293,3 +293,9 @@ The root flag was targeted and captured successfully by authenticating into the 
 cat /root/root.txt
 ```
 Root Flag Recovery Token: UTM{root_ssh_privilege_escalation_b623cf}
+
+---
+
+<div align="center">
+  <sub>Maintained by <b>pagarkristian</b> for Cyber Security & Red Team Portfolio Standardization.</sub>
+</div>
