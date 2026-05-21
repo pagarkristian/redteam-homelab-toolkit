@@ -144,8 +144,8 @@ A full-range port scan utilizing Nmap accompanied by default safe scripts and ba
 ```bash
 nmap -Pn -p- -sC -sV -T5 10.216.27.100
 ```
+<img width="1204" height="594" alt="Screenshot 2026-05-17 215735" src="https://github.com/user-attachments/assets/d83c4e79-787f-4430-b6c3-f17868c0b5d3" />
 
-<img width="800" height="412" alt="Screenshot 2026-05-15 143907" src="https://github.com/user-attachments/assets/76b610b2-6ea0-4e2f-89b1-373e7203de07" />
 
 
 # Discovered Open Ports & Services:
