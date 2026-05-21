@@ -1,4 +1,4 @@
-                                                         # 🎯 Red Team Arsenal: Targeted Auditing Suite for Enterprise Homelab
+# 🎯 Red Team Arsenal: Targeted Auditing Suite for Enterprise Homelab
 
 <div align="center">
   <img src="https://img.shields.io/badge/Operation-Red_Team_Engagement-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Operation" />
