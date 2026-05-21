@@ -151,7 +151,9 @@ nmap -Pn -p- -sC -sV -T5 10.216.27.100
 # Discovered Open Ports & Services:
 
 => Port 21/tcp (FTP): Running vsftpd 3.0.5. Anonymous FTP login is enabled (Response Code 230), representing an immediate data exposure vector.
+
 => Port 22/tcp (SSH): Running OpenSSH 9.6p1 (Target footprinting strongly implies a baseline Ubuntu Linux system).
+
 => Port 80/tcp (HTTP): Running Apache httpd 2.4.58, presenting a standard employee login interface portal.
 
 ### 2. Web Directory Discovery & Bruteforcing (Gobuster)
