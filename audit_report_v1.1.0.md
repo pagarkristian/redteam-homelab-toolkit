@@ -283,8 +283,10 @@ Tracing structural data elements mapped to the unauthenticated public Anonymous 
 ```Bash
 cat /var/ftp/pub/user.txt
 ```
-User Flag Recovery Token: UTM{ftp_anonymous_data_exposure_9f27d8}
 
+<img width="1676" height="559" alt="Screenshot 2026-05-21 215944" src="https://github.com/user-attachments/assets/20d741e0-4551-4651-a658-45ad71bbaddc" />
+<img width="1663" height="131" alt="Screenshot 2026-05-21 220552" src="https://github.com/user-attachments/assets/b3004cd1-5f4e-4303-85e0-16cd0c1ce5af" />
+User Flag Recovery Token: UTM{ftp_anonymous_data_exposure_9f27d8}
 
 ### 2. Capture Root Flag (Direct  SSH Access)
 The root flag was targeted and captured successfully by authenticating into the interactive terminal using high-level root administrative access on the host system:
@@ -292,6 +294,7 @@ The root flag was targeted and captured successfully by authenticating into the 
 ```Bash
 cat /root/root.txt
 ```
+<img width="665" height="551" alt="Screenshot 2026-05-21 220243" src="https://github.com/user-attachments/assets/b424ae5e-cbb7-4c15-be5b-53bbc5e8146d" />
 Root Flag Recovery Token: UTM{root_ssh_privilege_escalation_b623cf}
 
 ---
