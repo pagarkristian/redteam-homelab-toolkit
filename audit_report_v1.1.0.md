@@ -82,7 +82,8 @@ iface eth1 inet static
     netmask 255.255.255.0
     gateway 10.216.27.1
 ```
-<img width="416" height="53" alt="Screenshot 2026-05-14 234548 - Copy - Copy" src="https://github.com/user-attachments/assets/4134e553-22bc-40b5-be17-b5e0d7e65756" />
+<img width="1120" height="618" alt="Screenshot 2026-05-15 000416" src="https://github.com/user-attachments/assets/f8216a94-1747-495d-bbb8-2da8d1fea5f4" />
+
 
 
 ### To apply the changes directly into kernel space without bouncing the physical device hardware, the networking system daemon was restarted:
