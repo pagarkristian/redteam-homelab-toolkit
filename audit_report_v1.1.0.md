@@ -1,33 +1,55 @@
+# 🛡️ Comprehensive Security Audit & Penetration Testing Report: v1.1.0
 
-##  linux Configuration 
-### So we need add ip addres in the same range at mikrotik ip ether 2 so we can connet and ping
-```bash
-sudo nano /etc/network/interface
-```
-<img width="416" height="53" alt="Screenshot 2026-05-14 234548 - Copy - Copy" src="https://github.com/user-attachments/assets/7a9224fa-d2f1-43d0-93c3-14b92952590e" />
+<p align="center">
+  <a href="https://github.com/pagarkristian">
+    <img src="https://img.shields.io/badge/Auditor-Pagar%20Kristian%20Panjaitan-blue?style=for-the-badge&logo=github" alt="Profil Auditor" />
+  </a>
+  <img src="https://img.shields.io/badge/Lab_Version-v1.1.0-darkgreen?style=for-the-badge" alt="Versi Lab" />
+  <img src="https://img.shields.io/badge/Target_OS-Linux%20Ubuntu-orange?style=for-the-badge&logo=ubuntu" alt="Sistem Operasi Target" />
+  <img src="https://img.shields.io/badge/Status-PWNED%20/%20ROOTED-red?style=for-the-badge" alt="Status Eksploitasi" />
+</p>
 
-```bash
+---
 
-#Internet (Adapter 1)
+## 📌 Proyek Overview & Struktur Direktori
 
-auto ethe
-iface eth0 inet dhcp
+Dokumen ini berisi laporan teknis komprehensif mengenai audit keamanan dan simulasi eksploitasi yang dilakukan pada infrastruktur laboratorium lokal **PT. TechSecure Indonesia v1.1.0**. Simulasi ini dirancang untuk memvalidasi konfigurasi jaringan, menguji kerentanan aplikasi web, melakukan serangan kamus (*dictionary attack*), hingga mengeksploitasi sistem untuk mendapatkan bendera verifikasi (*CTF Flags*).
 
-#Adapter 2 MikroTik & Ubuntu
-auto ethi
-iface eth1 inet static
-  address 10.216.27.10
-  netmask 255.255.255.0
-  gateway 10.216.27.1
-```
-<img width="1120" height="618" alt="Screenshot 2026-05-15 000416" src="https://github.com/user-attachments/assets/9e891040-50f8-4584-a3df-ed1c29e52a9d" />
+### 📐 Topologi Infrastruktur Jaringan Lab
 
-And restart our network so the input we add can be each in linux
-<img width="599" height="59" alt="Screenshot 2026-05-15 181153" src="https://github.com/user-attachments/assets/282495bf-221f-47e5-bfc6-57a6bc09ce4e" />
-
-We can see our new ip linux with 
-```bash
-ip a
+```text
+                  [ INTERNET / WAN ]
+                           │
+                           │ (DHCP / NAT)
+                           ▼
+                  ┌─────────────────┐
+                  │   Kali Linux    │ (Node Auditor)
+                  │  (IP: 10.216.27.10)│
+                  └────────┬────────┘
+                           │
+                           │ (Interface: eth1)
+                           │
+                           ▼
+  ================== [ HOST-ONLY NETWORK ] ==================
+         (Subnet: 10.216.27.0/24 | Gateway: 10.216.27.1)
+                           │
+                           ├───► [ Gateway / Router MikroTik ]
+                           │          (IP: 10.216.27.1)
+                           │
+                           ▼
+              ┌─────────────────────────┐
+              │  Ubuntu Target Server   │ (TechSecure Portal)
+              │    (IP: 10.216.27.100)  │
+              └────────────┬────────────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         ▼                 ▼                 ▼
+   [ Port 21: FTP ]  [ Port 22: SSH ]  [ Port 80: HTTP ]
+     (vsftpd 3.0.5)   (OpenSSH 9.6p1)   (Apache 2.4.58)
+         │                 │                 │
+         ▼                 ▼                 ▼
+  Anonymous Login     Hydra Brute      SQLi & RCE
+     (User Flag)       Force (Foothold)  (www-data Shell)
 ```
 
 
