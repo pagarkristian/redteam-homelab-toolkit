@@ -109,7 +109,8 @@ ip a
 ```bash
 sudo nano /etc/resolv.conf
 ```
-<img width="1267" height="383" alt="Screenshot 2026-05-14 234602" src="https://github.com/user-attachments/assets/ea330203-afb7-4e48-9933-c37370709079" />
+
+<img width="1231" height="360" alt="Screenshot 2026-05-15 181117" src="https://github.com/user-attachments/assets/991433e2-5f28-47dd-8822-ce4647cfb94c" />
 
 
 ### 3. ICMP Route Validation (Ping Testing)
