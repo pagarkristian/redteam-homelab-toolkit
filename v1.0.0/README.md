@@ -1,51 +1,28 @@
-# 🎯 Red Team Arsenal: Targeted Auditing Suite for Enterprise Homelab
-
 <div align="center">
-  <img src="https://img.shields.io/badge/Operation-Red_Team_Engagement-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Operation" />
-  <img src="https://img.shields.io/badge/Target_Infrastructure-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
-  <img src="https://img.shields.io/badge/Focus-Full--Chain_Vulnerability_Validation-000000?style=for-the-badge&logo=python&logoColor=white" alt="Focus" />
+  <img src="https://img.shields.io/badge/Phase-Exploitation_%26_Retest-D32F2F?style=for-the-badge&logo=kali-linux&logoColor=white" alt="Phase" />
+  <img src="https://img.shields.io/badge/Target-Enterprise_Homelab_Core-1F4068?style=for-the-badge&logo=target&logoColor=white" alt="Target" />
+  <img src="https://img.shields.io/badge/Status-Done-1F883D?style=for-the-badge" />
 </div>
 
----
+# v1.0.0: Exploitation & Retest
 
-## 💀 1. Executive Mission
+> Every attack here was run against a server I built myself, on an isolated host-only network with no internet-facing exposure.
 
-> [!WARNING]
-> **LEGAL DISCLAIMER:** All payloads, automation scripts, and exploitation methodologies within this repository are developed **STRICTLY FOR EDUCATIONAL PURPOSES, INTERNAL SECURITY AUDITS, AND DEFENSIVE VALIDATION**. Testing was conducted exclusively within a legally authorized, isolated virtual laboratory environment (`enterprise-homelab-core`).
+## What this covers
 
-This repository serves as an **Offensive Security (Red Team) Playbook and Digital Weapon Arsenal**. The primary focus is to document how architectural flaws within the **designated target version baselines (e.g., `v1.0.0-vulnerable` and subsequent unhardened releases)** were exploited to achieve full control (*Remote Code Execution*).
+Full exploitation chain against the original vulnerable server from [enterprise-homelab-core, v1.0.0](https://github.com/pagarkristian/enterprise-homelab-core/tree/main/v1.0.0): port scanning and enumeration, SQL injection to bypass the admin login, an uploaded PHP web shell for remote code execution, SSH credential brute-forcing, and flag capture at two privilege levels. The same attacks are then re-run against the hardened server to confirm every path was actually closed — see [v1.0.0-audit_report.md](./v1.0.0-audit_report.md).
 
----
+## How this connects to the defender repo
 
-## 🏛️ 2. Target Environment Mapping
-
-The tools in this repository are specifically calibrated to attack targets within the following corporate network parameters:
-
-* 🎯 **Target Host IP (Ubuntu Server):** `10.216.27.100` (Internal LAN Segment)
-* 🌐 **Target Services:** `TechSecure` Business Portal (HTTP Port 80) & FTP Server (Port 21)
-* 🛡️ **Perimeter Gateway:** MikroTik RouterOS v7 (`10.216.27.1`)
-* 🐉 **Attacker Node:** Kali Linux Platform (`10.216.27.10`)
-
----
-
-
-
-## 🔗 3. Cross-Project Linkage
-
-This repository is an inseparable offensive counterpart to the main defensive project. To examine how the network architecture was built and how attacks from this arsenal were ultimately **blocked completely**, please visit the following links:
-
-> [!TIP]
-> * 🏛️ **Network Architecture & Defense:** Review the router configurations and server hardening blueprints at the [Enterprise Homelab Core Repository]
-
-(https://github.com/pagarkristian/enterprise-homelab-core).
-
-> [!TIP]
-> * 📄 **Official Retesting Report:** Read the comprehensive analysis of the failed attack (*Re-Exploit*) post-hardening in the [v1.1.0 Security Retesting Document]
-
-(https://github.com/pagarkristian/enterprise-homelab-core/blob/main/v1.1.0-Retesting.md).
+| Phase | Where |
+|---|---|
+| Vulnerable server built | `enterprise-homelab-core`, [`v1.0.0/v1.0.0-vulnerable.md`](https://github.com/pagarkristian/enterprise-homelab-core/blob/main/v1.0.0/v1.0.0-vulnerable.md) |
+| **Full exploitation chain + flag capture** | **this repo, [`v1.0.0-audit_report.md`](./v1.0.0-audit_report.md)** |
+| Server hardened | `enterprise-homelab-core`, [`v1.0.0/v1.1.0-hardened.md`](https://github.com/pagarkristian/enterprise-homelab-core/blob/main/v1.0.0/v1.1.0-hardened.md) |
+| Re-attack confirming the hardening holds | this repo, [`v1.0.0-audit_report.md`](./v1.0.0-audit_report.md) (retest section) |
 
 ---
 
 <div align="center">
-  <sub>Maintained by <b>pagarkristian</b> for Cyber Security & Red Team Portfolio Standardization.</sub>
+  <sub>Redteam Homelab Toolkit v1.0.0 · Maintained by <b>pagarkristian</b></sub>
 </div>
